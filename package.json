@@ -1,0 +1,43 @@
+{
+  "name": "connect-datacache",
+  "version": "1.0.0",
+  "description": "Express session connector for IBM DataCache",
+  "main": "index.js",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.10.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^2.5.2",
+    "nock": "^8.0.0",
+    "pre-commit": "^1.1.3",
+    "sinon": "^1.17.6"
+  },
+  "dependencies": {
+    "cfenv": "^1.0.3",
+    "express-session": "^1.13.0",
+    "request-promise": "^3.0.0",
+    "debug": "^2.2.0"
+  },
+  "scripts": {
+    "test": "mocha test --recursive",
+    "coverage": "istanbul cover _mocha -- --recursive",
+    "lint": "eslint index.js test lib"
+  },
+  "pre-commit": [ "lint", "test"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriantanasa/connect-datacache.git"
+  },
+  "keywords": [
+    "connect-datacache",
+    "express-session",
+    "datacache",
+    "bluemix"
+  ],
+  "author": "Adrian Tanasa <adrian_tanasa@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adriantanasa/connect-datacache/issues"
+  },
+  "homepage": "https://github.com/adriantanasa/connect-datacache#readme"
+}

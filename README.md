@@ -1,5 +1,9 @@
 # connect-datacache
 
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][downloads-url]
+[![Build Status][travis-image]][travis-url]
+
 NodeJS express-session storage for IBM DataCache service. 
 
 ## Setup
@@ -149,3 +153,10 @@ npm run coverage
 
 ### Attributions
 - The connect-datacache code is based on implementation from other express-session storages as: connect-redis
+
+[npm-image]: https://img.shields.io/npm/v/connect-datacache.svg
+[npm-url]: https://npmjs.org/package/connect-datacache
+[travis-image]: https://img.shields.io/travis/adriantanasa/connect-datacache/master.svg
+[travis-url]: https://travis-ci.org/adriantanasa/connect-datacache
+[downloads-image]: https://img.shields.io/npm/dm/connect-datacache.svg
+[downloads-url]: https://npmjs.org/package/connect-datacache

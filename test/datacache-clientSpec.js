@@ -120,6 +120,12 @@ describe('Testsuite - DataCacheClient', function() {
                             'credentials': minimalParams
                         }
                     ]
+                },
+                getServiceCreds: function(name) {
+                    var servObj = this.services['DataCache-custom'].find(function(item) {
+                        return item.name === name;
+                    });
+                    return servObj ? servObj.credentials : null;
                 }
             });
         });
@@ -128,7 +134,7 @@ describe('Testsuite - DataCacheClient', function() {
             cfStub.restore();
         });
 
-        it('Testcase - constructor from env', function() {
+        it('Testcase - constructor from env - by service type', function() {
             var dcClient = new DataCacheClient();
             expect(dcClient).to.be.ok;
             expect(dcClient.restURI).to.equal('https://restSecureDomain.tst/resources/datacaches');
@@ -140,6 +146,26 @@ describe('Testsuite - DataCacheClient', function() {
             expect(dcClient.options.locking).to.equal('optimistic');
             expect(dcClient.options.ttl).to.equal(3600);
             expect(dcClient.options.contentType).to.equal('application/json');
+        });
+
+        it('Testcase - constructor from env - by service name', function() {
+            var dcClient = new DataCacheClient({cfServiceName: 'service-datacachename'});
+            expect(dcClient).to.be.ok;
+            expect(dcClient.restURI).to.equal('https://restSecureDomain.tst/resources/datacaches');
+            expect(dcClient.restAuthHeader).to.equal(
+                'Basic ' + (new Buffer(minimalParams.username + ':' + minimalParams.password)
+                .toString('base64')));
+            expect(dcClient.options.mapName).to.equal(minimalParams.gridName);
+        });
+
+        it('Testcase - constructor from env - by service name - not present', function() {
+            try {
+                var dcClient = new DataCacheClient({cfServiceName: 'service-bad-datacachename'});
+            } catch (err) {
+                expect(err).to.be.ok;
+            }
+
+            expect(dcClient).not.to.be.ok;
         });
     });
 

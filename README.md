@@ -47,7 +47,7 @@ Bellow is an example with the full list of parameters - default values for optio
 
 ```javascript
 var store = new DataCacheStore(
-    // required parameters when no custom client provided
+    // required parameters when no custom client provided or no ENV credentials are set
     restResource: 'http://dcsdomain.bluemix.net/resources/datacaches/{gridName}',
     restResourceSecure: 'https://dcsdomain.bluemix.net/resources/datacaches/{gridName}',
     gridName: '{gridName}',
@@ -60,6 +60,8 @@ var store = new DataCacheStore(
     contentType: 'application/json',
     secure: true,
     ttl: 3600,
+    prefix: 'sess:',
+    cfServiceName: null,
     client: null
 );
 
@@ -82,8 +84,8 @@ Environment Variables > VCAP_SERVICES
                  "restResource": "http://ip-numeric/resources/datacaches/SYS_GENERATED_GRIDNAME",
                  "restResourceSecure": "https://sdomain.bluemix.net/resources/datacaches/SYS_GENERATED_GRIDNAME",
                  "gridName": "SYS_GENERATED_GRIDNAME",
-                 "username": "sysGeneratedUsername",
-                 "password": "sysGeneratedPass"
+                 "username": "SYS_GENERATED_USERNAME",
+                 "password": "SYS_GENERATED_PASSWORD"
                },
                "name": "datacache-service-name",
                "tags": []
@@ -129,6 +131,12 @@ For non-Bluemix environments can be customized as a namespace for data.
 
 ### ttl
 - session/storage time to live - overrides the cookie maxAge value if present
+
+### prefix
+- 
+
+### cfServiceName
+- load the Cloud Foundry Data Cache service credentials by service name (ex: "datacache-service-name") instead of type
 
 ### client
 - offers option to pass an instance of DataCacheClient or inteface matching object -> turns optional all the required parameters/credentials

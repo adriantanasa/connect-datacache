@@ -1,6 +1,6 @@
 {
   "name": "connect-datacache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Express session connector for IBM DataCache",
   "main": "index.js",
   "devDependencies": {
@@ -23,7 +23,10 @@
     "coverage": "istanbul cover _mocha -- --recursive",
     "lint": "eslint index.js test lib"
   },
-  "pre-commit": [ "lint", "test"],
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adriantanasa/connect-datacache.git"

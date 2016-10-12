@@ -46,23 +46,24 @@ app.use(session({
 Bellow is an example with the full list of parameters - default values for optional ones:
 
 ```javascript
-var store = new DataCacheStore(
-    // required parameters when no custom client provided or no ENV credentials are set
-    restResource: 'http://dcsdomain.bluemix.net/resources/datacaches/{gridName}',
-    restResourceSecure: 'https://dcsdomain.bluemix.net/resources/datacaches/{gridName}',
-    gridName: '{gridName}',
-    username: '{username}',
-    password: '{password}',
-    // optional parameters - default values
-    mapName: '{gridName}',
-    eviction: 'LUT',
-    locking: 'optimistic',
-    contentType: 'application/json',
-    secure: true,
-    ttl: 3600,
-    prefix: 'sess:',
-    cfServiceName: null,
-    client: null
+var store = new DataCacheStore({
+        // required parameters when no custom client provided or no ENV credentials are set
+        restResource: 'http://dcsdomain.bluemix.net/resources/datacaches/{gridName}',
+        restResourceSecure: 'https://dcsdomain.bluemix.net/resources/datacaches/{gridName}',
+        gridName: '{gridName}',
+        username: '{username}',
+        password: '{password}',
+        // optional parameters - default values
+        mapName: '{gridName}',
+        eviction: 'LUT',
+        locking: 'optimistic',
+        contentType: 'application/json',
+        secure: true,
+        ttl: 3600,
+        prefix: 'sess:',
+        cfServiceName: null,
+        client: null
+    }
 );
 
 ```

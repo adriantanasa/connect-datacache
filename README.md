@@ -4,7 +4,7 @@
 [![NPM Downloads][downloads-image]][downloads-url]
 [![Build Status][travis-image]][travis-url]
 
-NodeJS express-session storage for IBM DataCache service. 
+NodeJS express-session storage for IBM Bluemix Data Cache service. 
 
 ## Setup
 
@@ -111,12 +111,12 @@ http://secure.domain/resources/datacaches/SYS_GENERATED_GRIDNAME/MAP_NAME.EVICTI
 ex:
 https://ecaas3.w3ibm.bluemix.net/resources/datacaches/Ae7hjz7tQjuxF44ncLAvuQGH/Ae7hjz7tQjuxF44ncLAvuQGH.LUT.O/sess:t7OQGXZ3x8TNp269-lf-wsdnUBx5OcU6
 
-For non-Bluemix environments can be customized as a namespace for data.
+For non-Bluemix environments it can be customized as a namespace for data.
 
 ### eviction
-- 'LUT' - default
-- 'NONE'
-- 'LAT'
+- 'LUT' - default - expires based on the Last Update Time
+- 'NONE' - data is stored indefinitly (until si programaticaly deleted)
+- 'LAT' - expires based on Last Access Time
 
 ### locking
 - 'optimistic' - default
@@ -134,10 +134,14 @@ For non-Bluemix environments can be customized as a namespace for data.
 - session/storage time to live - overrides the cookie maxAge value if present
 
 ### prefix
-- 
+- custom prefix to be appended for all session keys
 
 ### cfServiceName
-- load the Cloud Foundry Data Cache service credentials by service name (ex: "datacache-service-name") instead of type
+- allows using multiple Data Cache services for same application - loads credentials from ENV using service name;
+
+```
+var store = new DataCacheStore({'cfenvServiceName': 'datacache-service-name'});
+```
 
 ### client
 - offers option to pass an instance of DataCacheClient or inteface matching object -> turns optional all the required parameters/credentials

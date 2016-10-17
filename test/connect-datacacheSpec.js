@@ -2,7 +2,7 @@
 
 var expect = require('chai').expect,
     sinon = require('sinon'),
-    DataCacheClient = require('../lib/datacache-client'),
+    DataCacheClient = require('datacache-client'),
     session = require('express-session'),
     DataCacheStore = require('../lib/connect-datacache')(session);
 
